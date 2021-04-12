@@ -32,14 +32,18 @@ app.use(express.json());
 
 app.use(compression({filter: (req, res) => {
 
-    if (req.headers['x-no-compression']) {
-      // don't compress responses with this request header
-      return false
-    }
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+  }
 
-    // fallback to standard filter function
-    return compression.filter(req, res)
-  }}));
+  // fallback to standard filter function
+  return compression.filter(req, res)
+}}));
+
+app.all('/proxyJson', require('./lib/proxyJsonMiddleware')({
+  targetDir: path.resolve(webpack.vardir, 'proxyJsonMiddleware'),
+}));
 
 app.use(express.static(webpack.public, {
   maxAge: '356 days',
