@@ -17,3 +17,9 @@ Then in second terminal
 
 
 Then visit: http://0.0.0.0:8080
+
+Then you can run some tests too
+
+	/bin/bash test.sh
+        # will run jest tests and 
+	/bin/bash cypress.sh .env

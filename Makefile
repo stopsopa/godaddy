@@ -17,5 +17,6 @@ serverdev:
 
 tests:
 	/bin/bash test.sh
+	/bin/bash cypress.sh .env
 
 
