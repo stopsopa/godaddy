@@ -6,4 +6,4 @@ buildtime.js
 yarn-error.log
 *-tmp-*
 /var/cache-loader
-
+/public/coverage/

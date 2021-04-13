@@ -15,3 +15,7 @@ serverdev:
 	/bin/bash server.sh development
 
 
+tests:
+	/bin/bash test.sh
+
+
