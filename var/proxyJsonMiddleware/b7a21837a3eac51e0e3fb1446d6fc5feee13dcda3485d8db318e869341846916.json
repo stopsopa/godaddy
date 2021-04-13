@@ -1,0 +1,33 @@
+{
+    "req.body.path": "https://api.github.com/orgs/godaddy/repos?per_page=10&page=40&sort=created&direction=desc",
+    "json": {
+        "status": 200,
+        "headers": {
+            "server": "GitHub.com",
+            "date": "Tue, 13 Apr 2021 03:20:23 GMT",
+            "content-type": "application/json; charset=utf-8",
+            "content-length": "5",
+            "cache-control": "public, max-age=60, s-maxage=60",
+            "vary": "Accept, Accept-Encoding, Accept, X-Requested-With",
+            "etag": "\"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\"",
+            "x-github-media-type": "github.v3; format=json",
+            "link": "<https://api.github.com/organizations/1406546/repos?per_page=10&page=17&sort=created&direction=desc>; rel=\"prev\", <https://api.github.com/organizations/1406546/repos?per_page=10&page=17&sort=created&direction=desc>; rel=\"last\", <https://api.github.com/organizations/1406546/repos?per_page=10&page=1&sort=created&direction=desc>; rel=\"first\"",
+            "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, Deprecation, Sunset",
+            "access-control-allow-origin": "*",
+            "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
+            "x-frame-options": "deny",
+            "x-content-type-options": "nosniff",
+            "x-xss-protection": "0",
+            "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+            "content-security-policy": "default-src 'none'",
+            "x-ratelimit-limit": "60",
+            "x-ratelimit-remaining": "41",
+            "x-ratelimit-reset": "1618286095",
+            "x-ratelimit-used": "19",
+            "accept-ranges": "bytes",
+            "x-github-request-id": "E7FB:E784:95C8F9:996090:60750DF7",
+            "connection": "close"
+        },
+        "body": []
+    }
+}

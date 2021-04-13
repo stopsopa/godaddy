@@ -1,0 +1,41 @@
+.repo-list {
+    .list {
+        display: flex;
+        flex-direction: column;
+        .repo {
+            display: flex;
+            flex-direction: column;
+            .name {
+                color: #0366d6;
+                font-size: 19px;
+                font-weight: bold;
+                line-height: 1.9em;
+                text-decoration: none;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            .description {
+                font-size: 14px;
+                color: #464646;
+            }
+            &:not(:last-child) {
+                padding-bottom: 10px;
+                border-bottom: 1px solid #e6e6e6;
+            }
+        }
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        a {
+            padding: 10px;
+            &.active {
+                background-color: #0366d6;
+                color: white;
+            }
+        }
+    }
+}
+
