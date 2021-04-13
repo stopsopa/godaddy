@@ -4,7 +4,9 @@
 Just follow Makefile:
 For dev just run:
 
-    
+
+    git clone git@github.com:stopsopa/godaddy.git
+    cd godaddy/    
     yarn
 
 Then run in two terminals:
