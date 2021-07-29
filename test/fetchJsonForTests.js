@@ -1,18 +1,14 @@
 
-const dotenv        = require('../webpack/dotenv');
-
-const negotiatePort = require('nlab/negotiatePort');
-
-const se = require('nlab/se');
-
-const log = require('inspc');
-
-const fetchJson = require('../lib/fetchJsonForNode');
-
 require('dotenv-up')({
   override    : false,
   deep        : 2,
 }, false, 'fetchJsonForTests');
+
+const fetchJson = require('../lib/fetchJsonForNode');
+
+const dotenv        = require('../webpack/dotenv');
+
+const negotiatePort = require('nlab/negotiatePort');
 
 let port = parseInt(dotenv('PORT'), 10);
 

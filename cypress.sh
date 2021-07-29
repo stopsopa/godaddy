@@ -1,4 +1,11 @@
 
+ISMAC="0"
+
+if [ "$(uname)" == "Darwin" ]; then
+
+  ISMAC="1"
+fi
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P )"
 
 if [ ! -f "$DIR/cypress.json" ]; then
@@ -25,6 +32,8 @@ fi
 function star {
   echo "$1" | sed -E "s/:star:/*/g"
 }
+
+NETHOST=""
 
 if [ "$1" = "" ]; then
 
@@ -174,6 +183,16 @@ fi
 set -e
 #set -x
 
+eval "$(/bin/bash "$DIR/bash/exportsource.sh" "$_ENVFILE")"
+
+if [ "$HOST" = "0.0.0.0" ] || [ "$HOST" = "localhost" ]; then
+
+  if [ "$ISMAC" = "0" ]; then
+
+    NETHOST="--net=host"
+  fi
+fi
+
 if [ "$_DOCKER" = "1" ]; then
 
   set -x
@@ -206,16 +225,14 @@ if [ "$_DOCKER" = "1" ]; then
   # https://mtlynch.io/painless-web-app-testing/
   # https://glebbahmutov.com/blog/run-cypress-included-from-docker-container/
 
-  echo -e "\n    docker run -it -v \"$DIR:/e2e\" -w /e2e --env __DOCKER=true --entrypoint=\"\" cypress/included:$VER $FINAL\n"
+  echo -e "\n    docker run -it -v \"$DIR:/e2e\" -w /e2e --env __DOCKER=true --entrypoint=\"\" $NETHOST cypress/included:$VER $FINAL\n"
 
-                 docker run -it -v "$DIR:/e2e"   -w /e2e --env __DOCKER=true --entrypoint=""   cypress/included:$VER $FINAL
+                 docker run -it -v "$DIR:/e2e"   -w /e2e --env __DOCKER=true --entrypoint="" $NETHOST  cypress/included:$VER $FINAL
 
 #  echo -e "\n    docker run -it -v \"$DIR:/e2e\" -w /e2e --env-file \"$_ENVFILE\" --entrypoint=\"\" cypress/included:6.6.0 $FINAL\n"
 #
 #                 docker run -it -v "$DIR:/e2e"   -w /e2e --env-file "$_ENVFILE"   --entrypoint=""   cypress/included:6.6.0 $FINAL
 else
-
-  eval "$(/bin/bash "$DIR/bash/exportsource.sh" "$_ENVFILE")"
 
   REG="^https?://"
 
@@ -230,6 +247,14 @@ else
       echo "PORT is not defined"
 
       exit 1
+    fi
+
+    if [ "$NETHOST" != "" ]; then
+
+      if [ "$ISMAC" = "1" ]; then
+
+        HOST="host.docker.internal"
+      fi
     fi
 
     if [ "$HOST" = "" ]; then
